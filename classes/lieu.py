@@ -5,18 +5,20 @@ Module contenant la classe Lieu.
 
 import uuid
 from datetime import datetime
-from typing import List
+from typing import List, TYPE_CHECKING
 from ville import Ville
 from utilisateur import Utilisateur
 from commodite import Commodite
-from avis import Avis
+
+if TYPE_CHECKING:
+    from avis import Avis
 
 class Lieu:
     """
     Classe représentant un lieu.
     """
     def __init__(self, nom: str, description: str, adresse: str, ville: Ville,
-                 latitude: float, longitude: float, hote: str,
+                 latitude: float, longitude: float, hote: Utilisateur,
                  chambres: int, salles_de_bains: int, prix_par_nuit: float,
                  max_invites: int):
         self.id = uuid.uuid4()
@@ -26,7 +28,7 @@ class Lieu:
         self.ville_id = ville.id
         self.latitude = latitude
         self.longitude = longitude
-        self.hote = hote
+        self.hote_id = hote.id
         self.chambres = chambres
         self.salles_de_bains = salles_de_bains
         self.prix_par_nuit = prix_par_nuit
@@ -44,3 +46,6 @@ class Lieu:
 
     def supprimer(self):
         pass
+
+    def ajouter_avis(self, avis: 'Avis'):
+        self.avis.append(avis)
