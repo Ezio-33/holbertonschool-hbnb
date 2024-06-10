@@ -2,18 +2,17 @@ from abc import ABC, abstractmethod
 
 class IPersistenceManager(ABC):
     @abstractmethod
-    def ajouter(self):
+    def save(self, entity):
         pass
 
     @abstractmethod
-    def modifier(self):
+    def get(self, entity_id, entity_type):
         pass
 
     @abstractmethod
-    def supprimer(self):
+    def update(self, entity):
         pass
 
     @abstractmethod
-    def connexion(self):
+    def delete(self, entity_id, entity_type):
         pass
-

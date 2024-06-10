@@ -1,12 +1,14 @@
+from interface_de_persistance import IPersistenceManager
+
 class DataManager(IPersistenceManager):
-    def ajouter(self):
+    def save(self, entity):
         pass
 
-    def modifier(self):
+    def get(self, entity_id, entity_type):
         pass
 
-    def supprimer(self):
+    def update(self, entity):
         pass
 
-    def connexion(self):
+    def delete(self, entity_id, entity_type):
         pass
