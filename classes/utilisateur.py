@@ -18,15 +18,3 @@ class Utilisateur:
         self.nom_de_famille = nom_de_famille
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-
-    def ajouter(self):
-        pass
-
-    def modifier(self):
-        pass
-
-    def supprimer(self):
-        pass
-
-    def connexion(self):
-        pass

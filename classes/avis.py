@@ -20,12 +20,3 @@ class Avis:
         self.lieu_id = lieu.id
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-
-    def ajouter(self):
-        pass
-
-    def modifier(self):
-        pass
-
-    def supprimer(self):
-        pass

@@ -13,12 +13,3 @@ class Commodite:
         self.id = uuid.uuid4()
         self.nom = nom
         self.description = description
-
-    def ajouter(self):
-        pass
-
-    def modifier(self):
-        pass
-
-    def supprimer(self):
-        pass

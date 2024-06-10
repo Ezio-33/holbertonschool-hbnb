@@ -14,12 +14,3 @@ class Ville:
         self.id = uuid.uuid4()
         self.nom = nom
         self.pays_id = pays.id
-
-    def ajouter(self):
-        pass
-
-    def modifier(self):
-        pass
-
-    def supprimer(self):
-        pass
