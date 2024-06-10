@@ -19,14 +19,16 @@ class DataManager(IPersistenceManager):
         self.data = self._load_data()
 
     def _load_data(self):
-        if os.path.exists(self.storage_file):
+        try:
             with open(self.storage_file, 'r') as file:
                 return json.load(file)
-        return {}
+        except FileNotFoundError:
+            return {}
 
     def _save_data(self):
         with open(self.storage_file, 'w') as file:
-            json.dump(self.data, file)
+            json.dump(self.data, file, default=lambda x: str(x))
+
 
     def save(self, entity):
         entity_id = str(entity.id)
