@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+Module contenant la classe Date.
+"""
+
 import uuid
 from datetime import datetime
 

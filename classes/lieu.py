@@ -5,11 +5,13 @@ Module contenant la classe Lieu.
 
 import uuid
 from datetime import datetime
-from typing import List
+from typing import List, TYPE_CHECKING
 from ville import Ville
 from utilisateur import Utilisateur
 from commodite import Commodite
-from avis import Avis
+
+if TYPE_CHECKING:
+    from avis import Avis
 
 class Lieu:
     """
