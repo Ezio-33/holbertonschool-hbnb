@@ -8,7 +8,7 @@ import os
 from uuid import UUID
 from typing import Type
 from datetime import datetime
-from i_persistence_manager import IPersistenceManager
+from interface_persistance import IPersistenceManager
 
 class DataManager(IPersistenceManager):
     """
