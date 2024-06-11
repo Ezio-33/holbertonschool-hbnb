@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 Module contenant la classe Utilisateur.
@@ -23,13 +22,13 @@ class Utilisateur:
 
     @property
     def email(self):
-        return self.__email
+        return self._email
     
     @email.setter
     def email(self, value):
         if not isinstance(value, str):
             raise TypeError("cette email existe déja")
-        self.__email = value
+        self._email = value
 
     @property
     def mot_de_passe(self):
@@ -43,13 +42,13 @@ class Utilisateur:
 
     @property
     def prenom(self):
-        return self.__prenom
+        return self._prenom
     
     @prenom.setter
     def prenom(self, value):
         if not isinstance(value, str):
             raise TypeError("le prenom doit etre une chaine de caractere")
-        self.__prenom = value
+        self._prenom = value
 
     @property
     def nom_de_famille(self):
