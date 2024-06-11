@@ -16,7 +16,7 @@ class Commodite:
 
     @property
     def nom(self):
-        self.__nom
+        return self.__nom
 
     @nom.setter
     def nom(self, value):

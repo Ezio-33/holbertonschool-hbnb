@@ -38,7 +38,7 @@ class Avis:
     
     @note.setter
     def note(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, int):
             raise TypeError("la note doit etre un entier")
         self.__note = value
 
