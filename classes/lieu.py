@@ -114,7 +114,7 @@ class Lieu:
     
     @created_at.setter
     def created_at(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, datetime):
             raise TypeError("created_at doit être une instance de date et d’heure")
         self.__created_at = value
 
@@ -124,7 +124,7 @@ class Lieu:
     
     @updated_at.setter
     def updated_at(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, datetime):
             raise TypeError("updated_at doit être une instance de date et d’heure")
         self.__updated_at = value
 

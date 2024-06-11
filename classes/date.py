@@ -14,3 +14,23 @@ class Date:
         self.id = uuid.uuid4()
         self.date_creation = datetime.now()
         self.date_mise_a_jour = datetime.now()
+
+    @property
+    def date_creation(self):
+        return self.__date_creation
+    
+    @date_creation.setter
+    def date_creation(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("date_creation doit être une instance de datetime")
+        self.__date_creation = value
+
+    @property
+    def date_mise_a_jour(self):
+        return self.__date_mise_a_jour
+    
+    @date_mise_a_jour.setter
+    def date_mise_a_jour(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("date_mise_a_jour doit être une instance de datetime")
+        self.__date_mise_a_jour = value
