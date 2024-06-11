@@ -35,7 +35,6 @@ class DataManager(IPersistenceManager):
         entity_type = entity.__class__.__name__
         if entity_type not in self.data:
             self.data[entity_type] = {}
-        # Use to_dict to serialize the object
         entity_dict = entity.to_dict()
         self.data[entity_type][entity_id] = entity_dict
         self._save_data()
@@ -45,7 +44,6 @@ class DataManager(IPersistenceManager):
         entity_id_str = str(entity_id)
         if entity_type_name in self.data and entity_id_str in self.data[entity_type_name]:
             entity_data = self.data[entity_type_name][entity_id_str]
-            # Use from_dict to deserialize the object
             return entity_type.from_dict(entity_data)
         return None
 
