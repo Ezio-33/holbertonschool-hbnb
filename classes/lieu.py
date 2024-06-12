@@ -38,14 +38,136 @@ class Lieu:
         self.commodites = []
         self.avis = []
 
-    def ajouter(self):
-        pass
+    @property
+    def nom(self):
+        return self.__nom
 
-    def modifier(self):
-        pass
+    @nom.setter
+    def nom(self, value):
+        if not isinstance(value, str):
+            raise TypeError("le nom doit etre une chaine de caractere")
+        self.__nom = value
 
-    def supprimer(self):
-        pass
+    @property
+    def description(self):
+        return self.__description
+    
+    @description.setter
+    def description(self, value):
+        if not isinstance(value, str):
+            raise TypeError("la description doit etre une chaine de caractere")
+        self.__description = value
 
-    def ajouter_avis(self, avis: 'Avis'):
-        self.avis.append(avis)
+    @property
+    def adresse(self):
+        return self.__adresse
+    
+    @adresse.setter
+    def adresse(self, value):
+        if not isinstance(value, str):
+            raise TypeError("l'adresse doit etre une chaine de caractere")
+        self.__adresse = value
+
+    @property
+    def chambres(self):
+        return self.__chambres
+    
+    @chambres.setter
+    def chambres(self, value):
+        if not isinstance(value, int):
+            raise TypeError("la chambres doit etre un entier")
+        self.__chambres = value
+
+    @property
+    def salles_de_bains(self):
+        return self.__salles_de_bains
+    
+    @salles_de_bains.setter
+    def salles_de_bains(self, value):
+        if not isinstance(value, int):
+            raise TypeError("la salle de bain doit etre un entier")
+        self.__salles_de_bains = value
+
+    @property
+    def prix_par_nuit(self):
+        return self.__prix_par_nuit
+    
+    @prix_par_nuit.setter
+    def prix_par_nuit(self, value):
+        if not isinstance(value, float):
+            raise TypeError("le prix par nuit doit etre un float")
+        self.__prix_par_nuit = value
+
+    @property
+    def max_invites(self):
+        return self.__max_invites
+    
+    @max_invites.setter
+    def max_invites(self, value):
+        if not isinstance(value, int):
+            raise TypeError("le max d'invités doit etre un entier")
+        self.__max_invites = value
+
+    @property
+    def created_at(self):
+        return self.__created_at
+    
+    @created_at.setter
+    def created_at(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("created_at doit être une instance de date et d’heure")
+        self.__created_at = value
+
+    @property
+    def updated_at(self):
+        return self.__updated_at
+    
+    @updated_at.setter
+    def updated_at(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("updated_at doit être une instance de date et d’heure")
+        self.__updated_at = value
+
+
+    @property
+    def ville_id(self):
+        return self.__ville_id
+    
+    @ville_id.setter
+    def ville_id(self, value):
+        if not isinstance(value, uuid) or value is None:
+            raise TypeError("ville_id doit être un UUID non vide")
+        self.__ville_id = value
+
+    @property
+    def hote_id(self):
+        return self.__hote_id
+    
+    @hote_id.setter
+    def hote_id(self, value):
+        if not isinstance(value, uuid) or value is None:
+            raise TypeError("hote_id doit être un UUID non vide")
+        self.__hote_id = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Lieu en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'nom': self.nom,
+            'description': self.description,
+            'adresse': self.adresse,
+            'ville_id': str(self.ville_id),
+            'latitude': self.latitude,
+            'longitude': self.longitude,
+            'hote_id': str(self.hote_id),
+            'chambres': self.chambres,
+            'salles_de_bains': self.salles_de_bains,
+            'prix_par_nuit': self.prix_par_nuit,
+            'max_invites': self.max_invites,
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat(),
+            'commodite': [commodite.to_dict() for commodite in self.commodites],
+            'avis': [avis.to_dict() for avis in self.avis]
+        }

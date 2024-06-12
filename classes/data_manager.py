@@ -8,6 +8,7 @@ import os
 from uuid import UUID
 from typing import Type
 from datetime import datetime
+from utilisateur import Utilisateur
 from interface_persistance import IPersistenceManager
 
 class DataManager(IPersistenceManager):
@@ -27,29 +28,31 @@ class DataManager(IPersistenceManager):
 
     def _save_data(self):
         with open(self.storage_file, 'w') as file:
-            json.dump(self.data, file, default=lambda x: str(x))
-
+            json.dump(self.data, file, default=str)
 
     def save(self, entity):
         entity_id = str(entity.id)
         entity_type = entity.__class__.__name__
         if entity_type not in self.data:
             self.data[entity_type] = {}
-        self.data[entity_type][entity_id] = entity.__dict__
+        entity_dict = entity.to_dict()
+        self.data[entity_type][entity_id] = entity_dict
         self._save_data()
 
     def get(self, entity_id: UUID, entity_type: Type):
         entity_type_name = entity_type.__name__
         entity_id_str = str(entity_id)
         if entity_type_name in self.data and entity_id_str in self.data[entity_type_name]:
-            return self.data[entity_type_name][entity_id_str]
+            entity_data = self.data[entity_type_name][entity_id_str]
+            return entity_type.from_dict(entity_data)
         return None
 
     def update(self, entity):
         entity_id = str(entity.id)
         entity_type = entity.__class__.__name__
         if entity_type in self.data and entity_id in self.data[entity_type]:
-            self.data[entity_type][entity_id] = entity.__dict__
+            entity_dict = entity.to_dict()
+            self.data[entity_type][entity_id] = entity_dict
             self._save_data()
 
     def delete(self, entity_id: UUID, entity_type: Type):

@@ -14,11 +14,33 @@ class Commodite:
         self.nom = nom
         self.description = description
 
-    def ajouter(self):
-        pass
+    @property
+    def nom(self):
+        return self.__nom
 
-    def modifier(self):
-        pass
+    @nom.setter
+    def nom(self, value):
+        if not isinstance(value, str):
+            raise TypeError("le nom doit etre une chaine de caractere")
+        self.__nom = value
 
-    def supprimer(self):
-        pass
+    @property
+    def description(self):
+        return self.__description
+    
+    @description.setter
+    def description(self, value):
+        if not isinstance(value, str):
+            raise TypeError("la description doit etre une chaine de caractere")
+        self.__description = value
+
+
+    def to_dict(self):
+        """
+        Convertit l'objet Commodite en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'nom': self.nom,
+            'description': self.description,
+        }

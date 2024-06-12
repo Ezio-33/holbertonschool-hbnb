@@ -21,11 +21,78 @@ class Avis:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
-    def ajouter(self):
-        pass
 
-    def modifier(self):
-        pass
+    @property
+    def commentaire(self):
+        return self.__commentaire
+    
+    @commentaire.setter
+    def commentaires(self, value):
+        if not isinstance(value, str):
+            raise TypeError("le commentaire doit etre une chaine de caractere")
+        self.__commentaire = value
 
-    def supprimer(self):
-        pass
+    @property
+    def note(self):
+        return self.__note
+    
+    @note.setter
+    def note(self, value):
+        if not isinstance(value, int):
+            raise TypeError("la note doit etre un entier")
+        self.__note = value
+
+    @property
+    def created_at(self):
+        return self.__created_at
+    
+    @created_at.setter
+    def created_at(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("created_at doit être une instance de date et d’heure")
+        self.__created_at = value
+
+    @property
+    def updated_at(self):
+        return self.__updated_at
+    
+    @updated_at.setter
+    def updated_at(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("updated_at doit être une instance de date et d’heure")
+        self.__updated_at = value
+
+    @property
+    def utilisateur_id(self):
+        return self.__utilisateur_id
+    
+    @utilisateur_id.setter
+    def utilisateur_id(self, value):
+        if not isinstance(value, uuid) or value is None:
+            raise TypeError("utilisateur_id doit être un UUID non vide")
+        self.__utilisateur_id = value
+
+    @property
+    def lieu_id(self):
+        return self.__lieu_id
+    
+    @lieu_id.setter
+    def lieu_id(self, value):
+        if not isinstance(value, uuid) or value is None:
+            raise TypeError("lieu_id doit être un UUID non vide")
+        self.__lieu_id = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Avis en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'commentaire': self.commentaire,
+            'note': self.note,
+            'utilisateur_id': str(self.utilisateur_id),
+            'lieu_id': str(self.lieu_id),
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat()
+        }
+    

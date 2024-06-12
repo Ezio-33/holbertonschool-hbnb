@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """
 Module contenant l'interface de gestion de la persistance des données.
