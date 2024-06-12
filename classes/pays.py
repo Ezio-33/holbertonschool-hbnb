@@ -31,3 +31,17 @@ class Pays:
             'id': str(self.id),
             'nom': self.nom
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Création d'une instance de la classe Lieu avec les valeurs du dictionnaire
+        """
+        instance = cls(
+            nom=data['nom'],
+        )
+        """
+        Assigner l'ID depuis le dictionnaire à l'instance
+        """
+        instance.id = uuid.UUID(data['id'])
+        return instance

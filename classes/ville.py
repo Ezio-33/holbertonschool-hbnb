@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 Module contenant la classe Ville.
@@ -45,3 +44,18 @@ class Ville:
             'nom': self.nom,
             'pays_id': str(self.pays_id)
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Création d'une instance de la classe ville avec les valeurs du dictionnaire
+        """
+        instance = cls(
+            nom=data['nom'],
+        )
+        """
+        Assigner l'ID depuis le dictionnaire à l'instance
+        """
+        instance.id = uuid.UUID(data['id']),
+        instance.pays_id = uuid.UUID(data['pays_id'])
+        return instance

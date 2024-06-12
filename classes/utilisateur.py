@@ -93,3 +93,25 @@ class Utilisateur:
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Création d'une instance de la classe Utilisateur avec les valeurs du dictionnaire
+        """
+        instance = cls(
+            email=data['email'],
+            mot_de_passe=data['mot_de_passe'],
+            prenom=data['prenom'],
+            nom_de_famille=data['nom_de_famille']
+        )
+        """
+        Assigner l'ID depuis le dictionnaire à l'instance
+        """
+        instance.id = uuid.UUID(data['id']) 
+        """
+        Assigner les dates created_at et updated_at en les convertissant du format isoformat en datetime
+        """
+        instance.created_at = datetime.fromisoformat(data['created_at'])
+        instance.updated_at = datetime.fromisoformat(data['updated_at'])
+        return instance

@@ -44,3 +44,18 @@ class Commodite:
             'nom': self.nom,
             'description': self.description,
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Création d'une instance de la classe Commodite avec les valeurs du dictionnaire
+        """
+        instance = cls(
+            nom=data['nom'],
+            description=data['description']
+        )
+        """
+        Assigner l'ID depuis le dictionnaire à l'instance
+        """
+        instance.id = uuid.UUID(data['id']) 
+        return instance
