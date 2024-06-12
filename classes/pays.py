@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 Module contenant la classe Pays.
@@ -23,3 +22,12 @@ class Pays:
         if not isinstance(value, str):
             raise TypeError("le nom doit etre une chaine de caractere")
         self.__nom = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Pays en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'nom': self.nom
+        }

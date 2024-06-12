@@ -79,3 +79,17 @@ class Utilisateur:
         if not isinstance(value, datetime):
             raise TypeError("updated_at doit être une instance de date et d’heure")
         self.__updated_at = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Utilisateur en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'email': self.email,
+            'mot_de_passe': self.mot_de_passe,
+            'prenom': self.prenom,
+            'nom_de_famille': self.nom_de_famille,
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat()
+        }

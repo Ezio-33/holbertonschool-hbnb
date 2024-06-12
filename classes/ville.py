@@ -35,3 +35,13 @@ class Ville:
         if not isinstance(value, uuid) or value is None:
             raise TypeError("pays_id doit être un UUID non vide")
         self.__pays_id = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Ville en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'nom': self.nom,
+            'pays_id': str(self.pays_id)
+        }
