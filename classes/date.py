@@ -34,3 +34,13 @@ class Date:
         if not isinstance(value, datetime):
             raise TypeError("date_mise_a_jour doit être une instance de datetime")
         self.__date_mise_a_jour = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Date en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'date_creation': self.date_creation.isoformat(),
+            'date_mise_a_jour': self.date_mise_a_jour.isoformat()
+        }

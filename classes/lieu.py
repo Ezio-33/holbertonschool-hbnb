@@ -148,3 +148,26 @@ class Lieu:
         if not isinstance(value, uuid) or value is None:
             raise TypeError("hote_id doit être un UUID non vide")
         self.__hote_id = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Lieu en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'nom': self.nom,
+            'description': self.description,
+            'adresse': self.adresse,
+            'ville_id': str(self.ville_id),
+            'latitude': self.latitude,
+            'longitude': self.longitude,
+            'hote_id': str(self.hote_id),
+            'chambres': self.chambres,
+            'salles_de_bains': self.salles_de_bains,
+            'prix_par_nuit': self.prix_par_nuit,
+            'max_invites': self.max_invites,
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat(),
+            'commodite': [commodite.to_dict() for commodite in self.commodites],
+            'avis': [avis.to_dict() for avis in self.avis]
+        }
