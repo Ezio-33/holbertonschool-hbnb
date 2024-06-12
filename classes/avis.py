@@ -81,3 +81,17 @@ class Avis:
         if not isinstance(value, uuid) or value is None:
             raise TypeError("lieu_id doit être un UUID non vide")
         self.__lieu_id = value
+
+    def to_dict(self):
+        """
+        Convertit l'objet Avis en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'commentaire': self.commentaire,
+            'note': self.note,
+            'utilisateur_id': str(self.utilisateur_id),
+            'lieu_id': str(self.lieu_id),
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat()
+        }

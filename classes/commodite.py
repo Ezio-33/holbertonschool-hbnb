@@ -33,3 +33,14 @@ class Commodite:
         if not isinstance(value, str):
             raise TypeError("la description doit etre une chaine de caractere")
         self.__description = value
+
+
+    def to_dict(self):
+        """
+        Convertit l'objet Commodite en dictionnaire.
+        """
+        return {
+            'id': str(self.id),
+            'nom': self.nom,
+            'description': self.description,
+        }
