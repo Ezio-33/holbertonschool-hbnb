@@ -40,7 +40,7 @@ class Lieu:
 
     @property
     def nom(self):
-        self.__nom
+        return self.__nom
 
     @nom.setter
     def nom(self, value):
@@ -74,7 +74,7 @@ class Lieu:
     
     @chambres.setter
     def chambres(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, int):
             raise TypeError("la chambres doit etre un entier")
         self.__chambres = value
 
@@ -84,7 +84,7 @@ class Lieu:
     
     @salles_de_bains.setter
     def salles_de_bains(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, int):
             raise TypeError("la salle de bain doit etre un entier")
         self.__salles_de_bains = value
 
@@ -94,7 +94,7 @@ class Lieu:
     
     @prix_par_nuit.setter
     def prix_par_nuit(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, float):
             raise TypeError("le prix par nuit doit etre un float")
         self.__prix_par_nuit = value
 
@@ -104,7 +104,7 @@ class Lieu:
     
     @max_invites.setter
     def max_invites(self, value):
-        if not isinstance(value, str):
+        if not isinstance(value, int):
             raise TypeError("le max d'invités doit etre un entier")
         self.__max_invites = value
 
